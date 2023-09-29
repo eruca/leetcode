@@ -10,7 +10,7 @@ pub fn is_palindrome(x: i32) -> bool {
         ret = ret / 10;
     }
 
-    for i in 0..nums.len() {
+    for i in 0..nums.len()/2 {
         if nums[i] != nums[nums.len() - i - 1] {
             return false;
         }

@@ -1,7 +1,4 @@
-use std::{
-    collections::{HashMap, HashSet},
-    ops::Index,
-};
+use std::collections::{HashMap, HashSet};
 
 fn length_of_longest_substring<S: AsRef<str>>(s: S) -> i32 {
     if s.as_ref() == "" {
@@ -59,13 +56,13 @@ fn length_of_longest_substring2(s: String) -> i32 {
     for (i, b) in bytes.into_iter().enumerate() {
         match index_of(&bytes[range.0..range.1], b) {
             Some(idx) => {
-                range.0 = idx + 1;
-                range.1 += 1
+                range.0 = idx + range.0 + 1;
             }
-            None => range.1 = i + 1,
+            None => {}
         }
+        range.1 += 1;
         println!("{:?}, max:{}", range, max);
-        if (range.1 - range.0) as i32 >= max {
+        if (range.1 - range.0) as i32 > max {
             max = (range.1 - range.0) as i32;
         }
     }
@@ -87,8 +84,8 @@ mod tests {
     #[test]
     fn it_works2() {
         assert_eq!(length_of_longest_substring2("abcabcbb".into()), 3);
-        // assert_eq!(length_of_longest_substring2("bbbbb".into()), 1);
-        // assert_eq!(length_of_longest_substring2("pwwkew".into()), 3);
-        // assert_eq!(length_of_longest_substring2("au".into()), 2);
+        assert_eq!(length_of_longest_substring2("bbbbb".into()), 1);
+        assert_eq!(length_of_longest_substring2("pwwkew".into()), 3);
+        assert_eq!(length_of_longest_substring2("au".into()), 2);
     }
 }

@@ -61,7 +61,6 @@ fn length_of_longest_substring2(s: String) -> i32 {
             None => {}
         }
         range.1 += 1;
-        println!("{:?}, max:{}", range, max);
         if (range.1 - range.0) as i32 > max {
             max = (range.1 - range.0) as i32;
         }

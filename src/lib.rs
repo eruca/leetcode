@@ -5,3 +5,4 @@ mod is_palindrome;
 mod rome_to_int;
 mod longest_common_prefix;
 mod is_valid_brackets;
+mod merge_two_lists;
